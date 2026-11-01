@@ -1,0 +1,42 @@
+{
+  "seed": 681,
+  "n_test_crops": 156,
+  "n_calibration_crops": 24,
+  "protocol": {
+    "crop_size": 256,
+    "crops_per_capture": 4,
+    "border": 4,
+    "ssim_window": 11,
+    "ssim_sigma": 1.5,
+    "ssim_use_sample_covariance": false
+  },
+  "machine": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.6"
+  },
+  "results": {
+    "noisy": {
+      "sigma": null,
+      "psnr": 28.16638061533021,
+      "ssim": 0.5095967920970219,
+      "psnr_std": 4.925844048630022,
+      "seconds_per_crop": 0.0
+    },
+    "bm3d": {
+      "sigma": 0.2,
+      "psnr": 38.44046526827572,
+      "ssim": 0.9360013177086626,
+      "psnr_std": 4.388567493866419,
+      "ssim_std": 0.07700976240073507,
+      "seconds_per_crop": 5.045594680769239
+    },
+    "nlm": {
+      "h": 0.08,
+      "psnr": 36.717224553632576,
+      "ssim": 0.9247625539051271,
+      "psnr_std": 3.5376742811675568,
+      "ssim_std": 0.08228129758277639,
+      "seconds_per_crop": 0.1880817314102807
+    }
+  }
+}

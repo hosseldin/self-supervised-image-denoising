@@ -1,0 +1,10 @@
+numpy==2.5.1
+scipy==1.18.1
+scikit-image==0.26.0
+pillow==12.3.0
+matplotlib==3.11.2
+bm3d==4.0.3
+kagglehub==1.0.3
+truststore==0.10.5
+tqdm==4.69.1
+ipykernel==7.3.0
