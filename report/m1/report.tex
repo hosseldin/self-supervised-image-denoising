@@ -5,7 +5,7 @@
 % Project 17: Self-Supervised Real-World Image Denoising Without Paired Data
 % CSE 681 Digital Image Processing
 %
-% Build: pdflatex report -> bibtex report -> pdflatex report -> pdflatex report
+% Build: pdflatex report -> pdflatex report (references are included below)
 % ============================================================
 \usepackage[margin=1in]{geometry}
 \usepackage[T1]{fontenc}
@@ -14,6 +14,7 @@
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage[round]{natbib}
+\setcitestyle{authoryear,round,aysep={}}
 \usepackage{hyperref}
 \hypersetup{colorlinks=true, linkcolor=blue!50!black, citecolor=blue!50!black, urlcolor=blue!50!black}
 \usepackage{enumitem}
@@ -23,14 +24,17 @@
 \title{\LARGE Project Proposal \& Literature Review \\[4pt]
 \large Self-Supervised Real-World Image Denoising Without Paired Data}
 \author{
-  Mennatalla Mostafa Mohamed Kamal Ibrahem | Student ID: 2101377 \and
-  Malak Ali Mahrous Ali | Student ID: 2501933 \and
-  Hossam Eldin Mahmoud Atta Mohamed Ali | Student ID: 2200015
+  \normalsize Mennatalla Mostafa Mohamed Kamal Ibrahem \textbar{} Student ID: 2101377 \\
+  \normalsize Malak Ali Mahrous Ali \textbar{} Student ID: 2501933 \\
+  \normalsize Hossam Eldin Mahmoud Atta Mohamed Ali \textbar{} Student ID: 2200015
 }
 \date{Milestone 1, 2 November 2026 \\{} CSE 681, Digital Image Processing}
 
 \begin{document}
 \maketitle
+\begin{center}
+GitHub repository: \url{https://github.com/hosseldin/self-supervised-image-denoising}
+\end{center}
 
 \begin{abstract}
 Phone cameras produce noisy images, but the usual way to train a denoiser needs matching
@@ -120,10 +124,10 @@ instead of assuming a noise level.
 \paragraph{Dataset.}
 SIDD-Small, sRGB version \citep{abdelhamed2018sidd}. It has 160 noisy and clean image
 pairs taken with five phones across a range of ISO, shutter and lighting settings. It is
-released under the MIT License, which we confirmed on the authors' project page on
+released under the MIT License, which we confirmed on the author's project page on
 1 November 2026. We downloaded it from a Kaggle mirror because the official server did not
 respond from our network. The mirror matches the file list in the official readme, with
-160 folders and 6.16\,GB of images. DND \citep{plotz2017dnd} is kept for a generalisation
+160 folders and 6.16\,GB of images. DND \citep{plotz2017dnd} is kept for a generalization
 check in Milestone 3 and is not used here.
 
 \paragraph{Splitting the data.}
@@ -156,7 +160,7 @@ Test  & 006, 007                     & 39 & 156 \\
 \paragraph{How we score.}
 PSNR and SSIM are computed on values clipped to $[0,1]$, with 4 pixels removed from each
 side so that edge effects from the filters are never counted. Every method is scored the
-same way. For SSIM we use the settings from \citet{wang2004ssim}, an 11 pixel Gaussian
+same way. For SSIM we use the settings from \citet{wang2004ssim}, an 11-pixel Gaussian
 window with $\sigma = 1.5$ and population covariance. We write these settings down because
 SSIM values from libraries that use different settings cannot be compared with each other.
 
@@ -202,26 +206,26 @@ deviation of 4.39\,dB for BM3D, because the two test scenes still contain a mix 
 low ISO shots and dark high ISO ones. Figure~\ref{fig:qual} shows the difference on one
 crop: BM3D keeps the faint lettering on the box, while non-local means smooths it away.
 
-These numbers come from our own held out crops. They are not scores from the official SIDD
+These numbers come from our own crops held out. They are not scores from the official SIDD
 benchmark and should not be compared with the published leaderboard.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.60\linewidth]{../../results/figures/calibration.png}
-\caption{Validation PSNR against filter strength, measured on 24 validation crops. Both
-curves peak inside the grid, BM3D at 0.20 and non-local means at 0.08, so neither result is
-limited by where we stopped searching. Non-local means drops off quickly past its peak,
-which is the over-smoothing expected once it starts averaging patches that are not really
-similar.}
+\includegraphics[width=\linewidth]{../../results/figures/calibration.png}
+\caption{BM3D and NLM calibration curves on 24 validation crops, with separate test results
+on 156 held-out crops (seed 681). Solid lines show validation PSNR, with selected settings
+of sigma\_psd = 0.20 for BM3D and h = 0.08 for NLM. Star markers show test PSNR at these
+settings: 38.440 dB for BM3D and 36.717 dB for NLM, matching Table~\ref{tab:baselines}.}
 \label{fig:calib}
 \end{figure}
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\linewidth]{../../results/figures/qualitative.png}
-\caption{One test crop, shot at ISO 100 in low light. BM3D removes the grain while keeping
-the lettering on the box readable. Non-local means removes the grain too but blurs the same
-detail, which is where its 1.72\,dB deficit comes from.}
+\caption{Qualitative comparison on one held-out SIDD test crop captured at ISO 100.
+BM3D achieves a PSNR of 42.70\,dB, compared with 40.23\,dB for NLM, giving a difference
+of approximately 2.47\,dB on this crop. The average PSNR difference across all 156 test
+crops is 1.72\,dB, as reported in Table~\ref{tab:baselines}.}
 \label{fig:qual}
 \end{figure}
 
@@ -284,8 +288,12 @@ rather than confusing.
 The compute tier for this project is GPU-light, and all of Milestone 1 in fact ran on the
 CPU of an 8-core Windows 11 laptop with 16\,GB of memory. The parameter search took about
 15 minutes and scoring the 156 test crops took about 14 minutes, almost all of it BM3D at
-5 seconds per crop. Non-local means added about a minute. The dataset is 6.2\,GB on disk
-and we load one crop at a time, so memory is never the limit.
+5 seconds per crop. Non-local means added about a minute. The dataset occupies
+approximately 6.2\,GB on disk. The current implementation loads full-resolution noisy
+and ground-truth images and collects their crops in memory. These crops are NumPy views,
+which keep the underlying full-resolution image arrays allocated while the crops are
+retained. Memory usage can therefore be substantially higher than the crop sizes alone
+suggest and must be considered when running the notebook on a machine with 16\,GB of RAM.
 
 The Milestone 2 model is deliberately small. The six-layer network of
 Section~\ref{sec:method} has roughly 90k parameters and trains on $128\times128$ patches
@@ -356,7 +364,7 @@ without retraining.
 \label{tab:tasks}
 \begin{tabular}{@{}p{0.10\linewidth}p{0.27\linewidth}p{0.27\linewidth}p{0.27\linewidth}@{}}
 \toprule
-\textbf{Milestone} & \textbf{Student A, data and baseline} & \textbf{Student B, model} & \textbf{Student C, evaluation} \\
+\textbf{Milestone} & \textbf{Eng. Mennatalla, data and baseline} & \textbf{Eng. Malak, model} & \textbf{Eng. Hossam, evaluation} \\
 \midrule
 M1, week 3 & SIDD pipeline, scene split, tuning BM3D and NLM & Design of the noisy-only training objective & PSNR and SSIM protocol, checking the split, results table \\
 M2, week 6 & BM3D table on all validation crops & Noise2Void network, first trained model & First comparison against the baseline, figures \\
@@ -373,7 +381,68 @@ code in the baseline notebook. All numbers reported here were produced by runnin
 \texttt{notebooks/m1\_baselines.ipynb} in our repository with seed 681 and can be
 reproduced from it. 
 
-\bibliographystyle{unsrtnat}
-\bibliography{references}
+% Reference text and ordering follow the user-supplied PDF.
+\begin{thebibliography}{13}
+\bibitem[Abdelhamed et~al.(2018)]{abdelhamed2018sidd}
+Abdelhamed, A., Lin, S., \& Brown, M. S. (2018, June). A high-quality denoising dataset for
+smartphone cameras. In \emph{2018 IEEE/CVF Conference on Computer Vision and Pattern
+Recognition} (pp. 1692--1700). IEEE.
+
+\bibitem[Batson and Royer(2019)]{batson2019noise2self}
+Batson, J., \& Royer, L. (2019, May). Noise2self: Blind denoising by self-supervision.
+In \emph{International conference on machine learning} (pp. 524--533). PMLR.
+
+\bibitem[Buades et~al.(2011)]{buades2011nlm}
+Buades, A., Coll, B., \& Morel, J. M. (2011). Non-local means denoising.
+\emph{Image processing on line, 1}, 208--212.
+
+\bibitem[Cheng et~al.(2025)]{cheng2025blindspot}
+Cheng, S., Li, H., Huang, H., Liu, X., \& Liu, S. (2025). Blind-spot guided diffusion for
+self-supervised real-world denoising. \emph{arXiv preprint arXiv:2509.16091}.
+
+\bibitem[Chihaoui and Favaro(2025)]{chihaoui2025sparsity}
+Chihaoui, H., \& Favaro, P. (2025). Unsupervised real-world denoising: sparsity is all you
+need. \emph{arXiv preprint arXiv:2503.21377}.
+
+\bibitem[Dabov et~al.(2007)]{dabov2007bm3d}
+Dabov, K., Foi, A., Katkovnik, V., \& Egiazarian, K. (2007). Image denoising by sparse
+3-D transform-domain collaborative filtering. \emph{IEEE Transactions on image processing,
+16}(8), 2080--2095.
+
+\bibitem[Krull et~al.(2019)]{krull2019noise2void}
+Krull, A., Buchholz, T. O., \& Jug, F. (2019, June). Noise2void-learning denoising from
+single noisy images. In \emph{2019 IEEE/CVF conference on computer vision and pattern
+recognition (CVPR)} (pp. 2124--2132). IEEE.
+
+\bibitem[Lee et~al.(2022)]{lee2022apbsn}
+Lee, W., Son, S., \& Lee, K. M. (2022, June). Ap-bsn: Self-supervised denoising for
+real-world images via asymmetric pd and blind-spot network. In \emph{2022 IEEE/CVF
+Conference on Computer Vision and Pattern Recognition (CVPR)} (pp. 17704--17713). IEEE.
+
+\bibitem[Lehtinen et~al.(2018)]{lehtinen2018noise2noise}
+Lehtinen, J., Munkberg, J., Hasselgren, J., Laine, S., Karras, T., Aittala, M., \& Aila, T.
+(2018). Noise2Noise: Learning image restoration without clean data.
+\emph{arXiv preprint arXiv:1803.04189}.
+
+\bibitem[Pl{\"o}tz and Roth(2017)]{plotz2017dnd}
+Plotz, T., \& Roth, S. (2017). Benchmarking denoising algorithms with real photographs.
+In \emph{Proceedings of the IEEE conference on computer vision and pattern recognition}
+(pp. 1586--1595).
+
+\bibitem[Wang et~al.(2004)]{wang2004ssim}
+Wang, Z., Bovik, A. C., Sheikh, H. R., \& Simoncelli, E. P. (2004). Image quality
+assessment: from error visibility to structural similarity. \emph{IEEE transactions on
+image processing, 13}(4), 600--612.
+
+\bibitem[Zhang et~al.(2017)]{zhang2017dncnn}
+Zhang, K., Zuo, W., Chen, Y., Meng, D., \& Zhang, L. (2017). Beyond a gaussian denoiser:
+Residual learning of deep cnn for image denoising. \emph{IEEE transactions on image
+processing, 26}(7), 3142--3155.
+
+\bibitem[Zhou et~al.(2020)]{zhou2020awgn}
+Zhou, Y., Jiao, J., Huang, H., Wang, Y., Wang, J., Shi, H., \& Huang, T. (2020, April).
+When awgn-based denoiser meets real noises. In \emph{Proceedings of the AAAI Conference
+on Artificial Intelligence} (Vol. 34, No. 07, pp. 13074--13081).
+\end{thebibliography}
 
 \end{document}
