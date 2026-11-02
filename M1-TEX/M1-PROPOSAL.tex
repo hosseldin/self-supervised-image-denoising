@@ -23,11 +23,11 @@
 \title{\LARGE Project Proposal \& Literature Review \\[4pt]
 \large Self-Supervised Real-World Image Denoising Without Paired Data}
 \author{
-  Mennatalla Mostafa Mohamed Kamal Ibrahem \and
+  Mennatalla Mostafa Mohamed Kamal \and
   Malak Ali Mahrous Ali \and
-  Hossam Eldin Mahmoud Atta Mohamed Ali
+  Hossam Eldin Mahmoud Atta
 }
-\date{Milestone 1, 2 November 2026 \\{} CSE 681, Digital Image Processing}
+\date{Milestone 1, November 2, 2026 \\{} CSE 681, Digital Image Processing}
 
 \begin{document}
 \maketitle
@@ -38,10 +38,10 @@ clean and noisy versions of the same photo, which are hard to capture and do not
 a camera already in someone's pocket. We plan to train a Noise2Void style blind spot
 network on SIDD that only ever sees noisy images. For Milestone 1 we built the data and
 evaluation pipeline and measured the classical filters we will be compared against. On 156
-test crops from two scenes that were never used for tuning, BM3D reaches 38.440\,dB PSNR
-and 0.9360 SSIM, against 28.166\,dB and 0.5096 for the noisy input. We also ran non-local
-means through the same pipeline and it reached 36.717\,dB, so BM3D is the stronger
-classical filter and is the number our own method will have to beat.
+test crops from two scenes that were never used for tuning, \textbf{BM3D} reaches \textbf{38.440\,dB PSNR}
+and \textbf{0.9360 SSIM}, against \textbf{28.166\,dB} and \textbf{0.5096} for the noisy input. We also ran non-local
+means through the same pipeline and it reached \textbf{36.717\,dB}, so \textbf{BM3D is the stronger
+classical filter} and is the number our own method will have to beat.
 \end{abstract}
 
 \section{Problem Statement \& Motivation}

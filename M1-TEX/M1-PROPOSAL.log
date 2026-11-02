@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.10.20)  2 NOV 2026 03:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.10.20)  2 NOV 2026 03:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -453,11 +453,7 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 79.
 
 (c:/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-
-LaTeX Warning: Reference `sec:risk' on page 1 undefined on input line 82.
-
-[1
+) [1
 
 {c:/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/texlive/2026/
 texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
@@ -523,23 +519,17 @@ Package natbib Warning: Citation `wang2004ssim' on page 3 undefined on input li
 ne 159.
 
 
-LaTeX Warning: Reference `fig:calib' on page 3 undefined on input line 170.
-
-
 Package natbib Warning: Citation `buades2011nlm' on page 3 undefined on input l
 ine 176.
 
-
-LaTeX Warning: Reference `fig:qual' on page 3 undefined on input line 202.
-
 [3]
-<../results/figures/calibration.png, id=51, 469.755pt x 289.08pt>
+<../results/figures/calibration.png, id=79, 469.755pt x 289.08pt>
 File: ../results/figures/calibration.png Graphic file (type png)
 <use ../results/figures/calibration.png>
 Package pdftex.def Info: ../results/figures/calibration.png  used on input line
  210.
 (pdftex.def)             Requested size: 281.85587pt x 173.44933pt.
-<../results/figures/qualitative.png, id=53, 1156.32pt x 346.896pt>
+<../results/figures/qualitative.png, id=81, 1156.32pt x 346.896pt>
 File: ../results/figures/qualitative.png Graphic file (type png)
 <use ../results/figures/qualitative.png>
 Package pdftex.def Info: ../results/figures/qualitative.png  used on input line
@@ -571,16 +561,7 @@ ne 270.
 Package natbib Warning: Citation `lee2022apbsn' on page 5 undefined on input li
 ne 270.
 
-
-LaTeX Warning: Reference `sec:method' on page 5 undefined on input line 291.
-
 [5]
-
-LaTeX Warning: Reference `sec:method' on page 6 undefined on input line 298.
-
-
-LaTeX Warning: Reference `sec:method' on page 6 undefined on input line 308.
-
 
 Package natbib Warning: Citation `zhang2017dncnn' on page 6 undefined on input 
 line 310.
@@ -632,27 +613,14 @@ Package natbib Warning: There were undefined citations.
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-09-09>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `M1-PROPOSAL.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `M1-PROPOSAL.out':
-(rerunfilecheck)             Before: EFBD43D24FB8883E3ACCB7ACC7F9EB96;481
-(rerunfilecheck)             After:  68B86E0CE6FD6CABBD408B784D5AB626;1376.
+Package rerunfilecheck Info: File `M1-PROPOSAL.out' has not changed.
+(rerunfilecheck)             Checksum: 68B86E0CE6FD6CABBD408B784D5AB626;1376.
  ) 
 Here is how much of TeX's memory you used:
- 11671 strings out of 467050
- 175008 string characters out of 5410549
- 616150 words of memory out of 5000000
- 40878 multiletter control sequences out of 15000+600000
+ 11677 strings out of 467050
+ 175084 string characters out of 5410549
+ 617998 words of memory out of 5000000
+ 40884 multiletter control sequences out of 15000+600000
  642953 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  74i,9n,79p,507b,572s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -671,10 +639,10 @@ e1/public/cm-super/sfrm1095.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/
 cm-super/sfrm1200.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/s
 frm1728.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfti1095.pf
 b><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on M1-PROPOSAL.pdf (7 pages, 1460468 bytes).
+Output written on M1-PROPOSAL.pdf (7 pages, 1466857 bytes).
 PDF statistics:
- 180 PDF objects out of 1000 (max. 8388607)
- 130 compressed objects within 2 object streams
+ 204 PDF objects out of 1000 (max. 8388607)
+ 154 compressed objects within 2 object streams
  34 named destinations out of 1000 (max. 500000)
- 35 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 83 words of extra memory for PDF output out of 10000 (max. 10000000)
 
