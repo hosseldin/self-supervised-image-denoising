@@ -1,15 +1,17 @@
-# Self-Supervised Real-World Image Denoising Without Paired Data
 
-**Project 17** — CSE 681 Digital Image Processing team project.
+# C17: Self-Supervised Real-World Image Denoising Without Paired Data
 
-Implementation and evaluation of self-supervised image denoising on real-world sensor
-noise (SIDD), compared against classical filtering and, if time allows, a supervised
-baseline.
+## **CSE681 Advanced Digital Image Processing Team Project**
 
-**Current status: Milestone 1.** The classical baselines (BM3D, NLM) are implemented,
+Implementation and evaluation of self-supervised image denoising on real-world sensor noise (SIDD), compared against classical filtering and, if time allows, a supervised baseline.
+
+### **Current status: Milestone 1**
+
+The classical baselines (BM3D, NLM) are implemented,
 calibrated and scored. No self-supervised model is trained yet — that is M2.
 
-**Objectives**
+#### **Objectives**
+
 - Implement a self-supervised denoiser (no clean/noisy pairs required).
 - Evaluate on real sensor noise vs. a classical filter and a supervised baseline.
 
@@ -23,7 +25,7 @@ Mean over **156 held-out test crops** from 2 scenes never used for calibration.
 Reproduced by running [`notebooks/m1_baselines.ipynb`](notebooks/m1_baselines.ipynb).
 
 | Method | Parameter | PSNR (dB) | SSIM | s/crop |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Noisy input | — | 28.166 | 0.5096 | — |
 | **BM3D** | `sigma_psd` = 0.20 | **38.440** | **0.9360** | 5.12 |
 | NLM | `h` = 0.08 | 36.717 | 0.9248 | 0.18 |
@@ -41,15 +43,14 @@ Raw outputs: `results/split.json`, `results/calibration.json`, `results/test_res
 Requires **Python 3.10+** (developed and run on 3.14.6, Windows 11).
 
 ```bash
-git clone <repo-url>
-cd self-supervised-image-denoising
-python -m venv .venv
-.venv\Scripts\activate        # Windows
-# source .venv/bin/activate   # Linux/macOS
-pip install -r requirements.txt
+git clone https://github.com/hosseldin/self-supervised-image-denoising.git  # Clone the repository
+cd self-supervised-image-denoising  # Navigate to the project directory
+python -m venv .venv  # Create a Python virtual environment
+.\.venv\Scripts\activate  # Activate the virtual environment
+pip install -r requirements.txt  # Install project dependencies
 ```
 
-### Dataset
+## Dataset
 
 SIDD-Small sRGB (~6.2 GB) is pulled from a Kaggle mirror and cached outside the repo.
 
@@ -73,7 +74,7 @@ requests fail with `CERTIFICATE_VERIFY_FAILED`.
   scene:
 
   | Split | Scenes | Captures | Crops |
-  |---|---|---|---|
+  | --- | --- | --- | --- |
   | train | 001, 003, 005, 008, 009, 010 | 91 | 364 |
   | val | 002, 004 | 30 | 120 |
   | test | 006, 007 | 39 | 156 |
@@ -103,7 +104,7 @@ requests fail with `CERTIFICATE_VERIFY_FAILED`.
 ## Milestone plan
 
 | M | Wk | Student A — Data & Baseline | Student B — Model/Algorithm | Student C — Evaluation | Deliverable |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | 1 | 3 | SIDD pipeline; BM3D baseline scoped | Design self-supervised denoising objective | Define PSNR/SSIM evaluation on real noise | Proposal + BM3D baseline numbers |
 | 2 | 6 | Full BM3D baseline table | Self-supervised denoiser, first checkpoint | Preliminary comparison on SIDD validation | Progress report, 1 comparison |
 | 3 | 9 | Final classical + (if time) supervised baseline | Final self-supervised model | Full SIDD + DND comparison table | Final report, repo, demo |
@@ -112,7 +113,7 @@ requests fail with `CERTIFICATE_VERIFY_FAILED`.
 
 ## Layout
 
-```
+```text
 notebooks/
   store_sidd.ipynb      # dataset download (run first)
   m1_baselines.ipynb    # M1 deliverable: split, metrics, BM3D/NLM, results
