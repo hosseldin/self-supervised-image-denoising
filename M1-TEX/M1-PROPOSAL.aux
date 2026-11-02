@@ -29,29 +29,29 @@
 \@writefile{toc}{\contentsline {section}{\numberline {3}Dataset \& Baseline Plan}{2}{section.3}\protected@file@percent }
 \newlabel{sec:data}{{3}{2}{Dataset \& Baseline Plan}{section.3}{}}
 \@writefile{toc}{\contentsline {paragraph}{Dataset.}{2}{section*.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Splitting the data.}{2}{section*.2}\protected@file@percent }
 \citation{wang2004ssim}
 \citation{buades2011nlm}
-\citation{krull2019noise2void}
-\citation{batson2019noise2self}
-\@writefile{toc}{\contentsline {paragraph}{Splitting the data.}{3}{section*.2}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces How the data is split. Four fixed $256\times 256$ crops are taken from each capture.}}{3}{table.2}\protected@file@percent }
 \newlabel{tab:data}{{2}{3}{How the data is split. Four fixed $256\times 256$ crops are taken from each capture}{table.2}{}}
 \@writefile{toc}{\contentsline {paragraph}{How we score.}{3}{section*.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Choosing the filter settings.}{3}{section*.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Why BM3D and not non-local means.}{3}{section*.5}\protected@file@percent }
-\citation{lehtinen2018noise2noise}
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Classical filters on the 156 test crops, seed 681. Measured on an 8-core Windows 11 laptop using the CPU only.}}{4}{table.3}\protected@file@percent }
-\newlabel{tab:baselines}{{3}{4}{Classical filters on the 156 test crops, seed 681. Measured on an 8-core Windows 11 laptop using the CPU only}{table.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Classical filters on the 156 test crops, seed 681. Measured on an 8-core Windows 11 laptop using the CPU only.}}{3}{table.3}\protected@file@percent }
+\newlabel{tab:baselines}{{3}{3}{Classical filters on the 156 test crops, seed 681. Measured on an 8-core Windows 11 laptop using the CPU only}{table.3}{}}
+\citation{krull2019noise2void}
+\citation{batson2019noise2self}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Validation PSNR against filter strength, measured on 24 validation crops. Both curves peak inside the grid, BM3D at 0.20 and non-local means at 0.08, so neither result is limited by where we stopped searching. Non-local means drops off quickly past its peak, which is the over-smoothing expected once it starts averaging patches that are not really similar.}}{4}{figure.1}\protected@file@percent }
 \newlabel{fig:calib}{{1}{4}{Validation PSNR against filter strength, measured on 24 validation crops. Both curves peak inside the grid, BM3D at 0.20 and non-local means at 0.08, so neither result is limited by where we stopped searching. Non-local means drops off quickly past its peak, which is the over-smoothing expected once it starts averaging patches that are not really similar}{figure.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces One test crop, shot at ISO 100 in low light. BM3D removes the grain while keeping the lettering on the box readable. Non-local means removes the grain too but blurs the same detail, which is where its 1.72\,dB deficit comes from.}}{4}{figure.2}\protected@file@percent }
+\newlabel{fig:qual}{{2}{4}{One test crop, shot at ISO 100 in low light. BM3D removes the grain while keeping the lettering on the box readable. Non-local means removes the grain too but blurs the same detail, which is where its 1.72\,dB deficit comes from}{figure.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Proposed Method}{4}{section.4}\protected@file@percent }
 \newlabel{sec:method}{{4}{4}{Proposed Method}{section.4}{}}
-\@writefile{toc}{\contentsline {paragraph}{The training step.}{4}{section*.6}\protected@file@percent }
+\citation{lehtinen2018noise2noise}
 \citation{zhou2020awgn}
 \citation{zhou2020awgn}
 \citation{lee2022apbsn}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces One test crop, shot at ISO 100 in low light. BM3D removes the grain while keeping the lettering on the box readable. Non-local means removes the grain too but blurs the same detail, which is where its 1.72\,dB deficit comes from.}}{5}{figure.2}\protected@file@percent }
-\newlabel{fig:qual}{{2}{5}{One test crop, shot at ISO 100 in low light. BM3D removes the grain while keeping the lettering on the box readable. Non-local means removes the grain too but blurs the same detail, which is where its 1.72\,dB deficit comes from}{figure.2}{}}
+\@writefile{toc}{\contentsline {paragraph}{The training step.}{5}{section*.6}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{The network.}{5}{section*.7}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Breaking the spatial correlation.}{5}{section*.8}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{What we will measure.}{5}{section*.9}\protected@file@percent }
@@ -67,21 +67,8 @@
 \newlabel{sec:risk}{{6}{6}{Risk Assessment}{section.6}{}}
 \bibstyle{unsrtnat}
 \bibdata{references}
-\bibcite{abdelhamed2018sidd}{{1}{2018}{{Abdelhamed et~al.}}{{Abdelhamed, Lin, and Brown}}}
-\bibcite{lehtinen2018noise2noise}{{2}{2018}{{Lehtinen et~al.}}{{Lehtinen, Munkberg, Hasselgren, Laine, Karras, Aittala, and Aila}}}
-\bibcite{krull2019noise2void}{{3}{2019}{{Krull et~al.}}{{Krull, Buchholz, and Jug}}}
-\bibcite{batson2019noise2self}{{4}{2019}{{Batson and Royer}}{{}}}
-\bibcite{chihaoui2025sparsity}{{5}{2025}{{Chihaoui and Favaro}}{{}}}
 \@writefile{toc}{\contentsline {section}{\numberline {7}Work Breakdown}{7}{section.7}\protected@file@percent }
 \newlabel{sec:workbreakdown}{{7}{7}{Work Breakdown}{section.7}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Who does what, following the task split in the project catalog.}}{7}{table.4}\protected@file@percent }
 \newlabel{tab:tasks}{{4}{7}{Who does what, following the task split in the project catalog}{table.4}{}}
-\bibcite{cheng2025blindspot}{{6}{2025}{{Cheng et~al.}}{{Cheng, Li, Huang, Liu, and Liu}}}
-\bibcite{dabov2007bm3d}{{7}{2007}{{Dabov et~al.}}{{Dabov, Foi, Katkovnik, and Egiazarian}}}
-\bibcite{buades2011nlm}{{8}{2011}{{Buades et~al.}}{{Buades, Coll, and Morel}}}
-\bibcite{zhou2020awgn}{{9}{2020}{{Zhou et~al.}}{{Zhou, Jiao, Huang, Wang, Wang, Shi, and Huang}}}
-\bibcite{plotz2017dnd}{{10}{2017}{{Pl{\"o}tz and Roth}}{{}}}
-\bibcite{wang2004ssim}{{11}{2004}{{Wang et~al.}}{{Wang, Bovik, Sheikh, and Simoncelli}}}
-\bibcite{lee2022apbsn}{{12}{2022}{{Lee et~al.}}{{Lee, Son, and Lee}}}
-\bibcite{zhang2017dncnn}{{13}{2017}{{Zhang et~al.}}{{Zhang, Zuo, Chen, Meng, and Zhang}}}
-\gdef \@abspage@last{8}
+\gdef \@abspage@last{7}
