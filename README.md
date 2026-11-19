@@ -104,7 +104,7 @@ requests fail with `CERTIFICATE_VERIFY_FAILED`.
 ## Milestone plan
 
 | M | Wk | Student A — Data & Baseline | Student B — Model/Algorithm | Student C — Evaluation | Deliverable |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | 1 | 3 | SIDD pipeline; BM3D baseline scoped | Design self-supervised denoising objective | Define PSNR/SSIM evaluation on real noise | Proposal + BM3D baseline numbers |
 | 2 | 6 | Full BM3D baseline table | Self-supervised denoiser, first checkpoint | Preliminary comparison on SIDD validation | Progress report, 1 comparison |
 | 3 | 9 | Final classical + (if time) supervised baseline | Final self-supervised model | Full SIDD + DND comparison table | Final report, repo, demo |
