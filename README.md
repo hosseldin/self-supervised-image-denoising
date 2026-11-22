@@ -19,6 +19,12 @@ methods helps show the trade-off between quality and speed.
 The M1 test results and M2 validation results are reported
 separately because they use different image splits.
 
+The two M2 runs use the same validation crops and filter settings.
+The earlier run recorded four CPU threads; the later Colab run requested two
+through its runtime and environment settings. BM3D retained its default native
+profile in both runs. Timings depend on the machine and library implementation,
+so the difference between runs is not evidence of a change in filter quality.
+
 #### **Objectives**
 
 - Implement a self-supervised denoiser (no clean/noisy pairs required).
@@ -47,7 +53,7 @@ Raw outputs: `results/split.json`, `results/calibration.json`, `results/test_res
 
 ---
 
-## Setup
+## Setup for the M1 notebooks
 
 Requires **Python 3.10+** (developed and run on 3.14.6, Windows 11).
 
@@ -79,9 +85,103 @@ they do not run the filters or train a model.
 Open `notebooks/m2_baseline_review.ipynb` to review and plot the earlier run
 (Matplotlib is needed for its chart).
 
-The M2 notebook depends on the repository's scripts and result files, so keep
-their folder structure intact. A fresh filtering experiment needs the input
-images and runner from the separately supplied complete project package.
+The review notebook depends on the repository's scripts and result files, so
+keep their folder structure intact. To run the filters on images, use the M2
+runner below.
+
+## Run the M2 baselines on images
+
+This runner evaluates noisy input, BM3D and NLM on the fixed 120 validation
+crops. It needs no CNN checkpoint or PyTorch installation. The filter calls,
+float32 image handling and RGB PSNR/SSIM formula match the recorded M2 pipeline.
+The metric function is shared with the complete project's evaluation code.
+
+Use Python 3.12 or 3.13. From the repository root on Windows:
+
+```bat
+python -m venv .venv-m2
+.venv-m2\Scripts\python.exe -m pip install -r requirements-m2.txt
+```
+
+On Linux/macOS use `.venv-m2/bin/python` instead. `requirements-m2.txt` defines
+the baseline-only environment; the original `requirements.txt` is for M1.
+Historical Colab versions are preserved in
+`results/mennatalla_m2_2026_11_22/environment_and_protocol.json` (Python 3.13.18,
+NumPy 2.4.6). The new installation uses NumPy 2.3.5 with the same BM3D, BM4D,
+scikit-image and SciPy versions. New runs record their actual versions and
+timings; small numerical differences and larger timing differences are expected.
+
+### Prepare the input images
+
+Choose one input route. Image data are kept outside Git history.
+
+**Existing validation ZIP:** if you have `Mennatalla_M2_Run_Data.zip` from the
+shared project package, import it with:
+
+```bat
+.venv-m2\Scripts\python.exe scripts\run_m2_baselines.py prepare --validation-zip "PATH\TO\Mennatalla_M2_Run_Data.zip" --output data\m2
+```
+
+The importer verifies the ZIP's recorded SHA-256 and copies only its 120 noisy
+and clean validation pairs, manifest and provenance. It ignores the code in
+that archive. The manifest still describes all splits; this ZIP contains only
+the validation images.
+
+**From SIDD-Small:** download and extract the sRGB dataset from the
+[Kaggle mirror](https://www.kaggle.com/datasets/rajat95gupta/smartphone-image-denoising-dataset).
+Choose the `Data` directory containing the 160 capture folders, then run:
+
+```bat
+.venv-m2\Scripts\python.exe scripts\run_m2_baselines.py prepare --sidd-dir "PATH\TO\SIDD_Small_sRGB_Only\Data" --output data\m2
+```
+
+This recreates the fixed 364/120/156 crop split. Training rows have no clean
+targets. Input file hashes identify the downloaded copy; they are not a claim
+of verification against an official author-published checksum. Both prepare
+commands require a new output folder.
+
+### Run and inspect the results
+
+First check one crop, then run all 120 in a different output folder:
+
+```bat
+.venv-m2\Scripts\python.exe scripts\run_m2_baselines.py run --data data\m2 --output runs\m2_smoke_01 --limit 1
+.venv-m2\Scripts\python.exe scripts\run_m2_baselines.py run --data data\m2 --output runs\m2_full_01
+```
+
+The default requests two threads via OMP/MKL/OpenBLAS before importing native
+libraries and retains BM3D's default `np` profile. This is not a measurement of
+actual native worker counts. Add `--threads 4` to request a different limit.
+BM3D may take many minutes on a CPU. Keep the process running until `COMPLETE`.
+Open CSV files in spreadsheet applications after the run completes; some Windows
+applications hold an exclusive lock on files they open.
+Interrupted runs retain per-crop snapshots, but this runner does not resume;
+choose a new output folder to restart.
+
+Open `comparison.csv`, `validation_comparison.png` and `before_after.png` in the
+new output folder. Per-crop CSV files, summaries, input hashes, code hashes and
+environment metadata are saved alongside them. `--limit` runs are labelled
+`smoke_test` and must not be reported as the full validation experiment. The
+first crop is selected by manifest order, not by its score. Image scores are
+per-crop; the comparison table contains means across the evaluated crops.
+Time includes the filter, output conversion and clipping, but excludes image
+loading, metric calculation and file writing. Existing result folders are
+never overwritten.
+
+For Google Colab, open
+[`notebooks/m2_baselines_run.ipynb`](notebooks/m2_baselines_run.ipynb),
+or use [Open in Colab](https://colab.research.google.com/github/hosseldin/self-supervised-image-denoising/blob/menna-m2-review/notebooks/m2_baselines_run.ipynb).
+It runs the same CLI in a separate process and accepts the validation-data ZIP.
+In Colab it connects Drive by default and checks write/read access before saving
+new runs under `MyDrive/C17_M2_Baseline_Runs`. Setting `SAVE_TO_DRIVE = False`
+uses temporary storage instead. Download the results ZIP and executed notebook
+as separate copies; a visible notebook output alone does not preserve its files.
+
+Basic correctness and input checks can be run with:
+
+```bat
+.venv-m2\Scripts\python.exe -m unittest discover -s tests -v
+```
 
 ## Dataset
 
@@ -151,10 +251,15 @@ notebooks/
   store_sidd.ipynb          # download SIDD for the M1 experiment
   m1_baselines.ipynb        # M1 calibration and held-out test evaluation
   m2_baseline_review.ipynb  # review the earlier saved M2 validation run
+  m2_baselines_run.ipynb    # execute a new baseline run locally or in Colab
 scripts/
   review_m2_baselines.py    # check the earlier M2 measurements
   review_mennatalla_run.py  # check the later Colab measurements
+  run_m2_baselines.py      # prepare images and run the fixed CPU baselines
 src/c17/data.py             # prepare the fixed scene split and image crops
+src/c17/baseline_data.py    # import validation images or crop extracted SIDD
+src/c17/baselines.py        # BM3D/NLM evaluation and output figures
+src/c17/metrics.py          # unchanged shared RGB PSNR/SSIM formula
 results/
   m2_baselines/            # earlier M2 validation results
   mennatalla_m2_2026_11_22/ # later Colab validation results
@@ -162,6 +267,7 @@ results/
   figures/                 # M1 figures
 report/m1/                 # M1 proposal, source and bibliography
 requirements.txt
+requirements-m2.txt        # separate baseline-only environment
 ```
 
 ---
@@ -192,3 +298,6 @@ The M1 results come from `notebooks/m1_baselines.ipynb`. The M2 validation
 results are saved separately in `results/m2_baselines/` and
 `results/mennatalla_m2_2026_11_22/`. The two review scripts check those saved
 measurements; they do not rerun denoising.
+
+The standalone M2 runner and its setup documentation were also prepared with
+AI assistance. New runs are separate from the recorded student Colab run.

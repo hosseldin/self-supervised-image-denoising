@@ -1,0 +1,9 @@
+# CPU-only baseline runner; use Python 3.12 or 3.13 in a separate environment.
+# The historical Colab versions remain recorded with the saved results.
+numpy==2.3.5
+scipy==1.16.3
+scikit-image==0.25.2
+pillow==11.3.0
+matplotlib==3.10.0
+bm3d==4.0.3
+bm4d==4.2.5
