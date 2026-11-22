@@ -1,7 +1,6 @@
 MENNATALLA - M2 GITHUB ADDITIONS (22 NOVEMBER 2026)
 
-Read docs/MENNATALLA_REVIEW_NOTES.txt first. It contains a first-person draft
-based on the verified run, not a claim of independent authorship or peer review.
+Start with notebooks/m2_mennatalla_colab_executed.ipynb to review the completed run.
 
 The new run is in results/mennatalla_m2_2026_11_22/. The earlier saved validation evidence remains
 in results/m2_baselines/. Do not mix their runtimes or replace M1 test values.
@@ -31,4 +30,4 @@ M1 files and the submitted report are not replaced by this package.
 Coordinate the shared M2 report and team integration with Hossam and Malak.
 
 Suggested commit message:
-Add Mennatalla M2 Colab validation results and review notes
+Add Mennatalla M2 Colab validation results
