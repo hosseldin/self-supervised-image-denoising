@@ -1,6 +1,8 @@
 {
   "original_executed_notebook_sha256": "c7f757d1a649efdb62ba1f9af000842c71e9e5596a4866bcd905d57ad78e88ab",
-  "public_notebook_sha256": "cf260974e990db4859138668ea4e489d32bdb9b899cc2ffd9e12b6ec8af5bef6",
+  "initial_public_notebook_sha256": "cf260974e990db4859138668ea4e489d32bdb9b899cc2ffd9e12b6ec8af5bef6",
+  "public_notebook_present": false,
+  "notebook_record_scope": "Historical verification of the initially published notebook. The notebook was later removed from this branch at the user's request.",
   "code_cells_ast_unchanged": true,
   "original_execution_counts_preserved": true,
   "stream_and_png_outputs_preserved": true,

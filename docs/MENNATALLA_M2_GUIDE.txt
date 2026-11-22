@@ -1,21 +1,21 @@
 MENNATALLA - M2 GITHUB ADDITIONS (22 NOVEMBER 2026)
 
-Start with notebooks/m2_mennatalla_colab_executed.ipynb to review the completed run.
+Start with results/mennatalla_m2_2026_11_22/comparison.csv and before_after.png
+in the same directory to review the completed run.
 
 The new run is in results/mennatalla_m2_2026_11_22/. The earlier saved validation evidence remains
 in results/m2_baselines/. Do not mix their runtimes or replace M1 test values.
 
-Open notebooks/m2_mennatalla_colab_executed.ipynb in Colab using File > Upload
-notebook. Read the stored outputs without Run all when reviewing. The public
-copy keeps the original code, execution counts, measurements and PNGs, with
-explanatory comments and Markdown added afterwards. Interactive upload/download
-widgets and runtime metadata are removed; the exact original notebook remains
-in the verified local archive. No API credentials or input dataset ZIP is included.
+The result directory includes per-crop measurements, summaries, figures, and
+the recorded environment and protocol. The executed Colab notebook has been
+removed from this branch; its original copy remains in the local archive.
+For the earlier saved M2 comparison, open notebooks/m2_baseline_review.ipynb.
 
-For a new filtering experiment, use the executed notebook with the unchanged
-Mennatalla_M2_Run_Data.zip input archive already supplied separately. It includes
-the exact original supporting source modules and 120 image pairs. The current
-public repository does not yet contain the full team model/evaluation handoff.
+For a new filtering experiment, use the separately supplied
+Mennatalla_M2_Run_SaveToDrive.ipynb and Mennatalla_M2_Run_Data.zip. The input
+archive includes the original supporting source modules and 120 image pairs.
+These files are not included in this branch. The current public repository
+does not yet contain the full team model/evaluation handoff.
 This member package is an M2 addition, not the entire team's runnable project.
 
 For a read-only check of these recorded measurements, run from the repository:
