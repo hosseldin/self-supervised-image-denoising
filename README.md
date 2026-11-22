@@ -52,12 +52,36 @@ Raw outputs: `results/split.json`, `results/calibration.json`, `results/test_res
 Requires **Python 3.10+** (developed and run on 3.14.6, Windows 11).
 
 ```bash
-git clone https://github.com/hosseldin/self-supervised-image-denoising.git  # Clone the repository
+git clone --branch menna-m2-review https://github.com/hosseldin/self-supervised-image-denoising.git  # Clone this review branch
 cd self-supervised-image-denoising  # Navigate to the project directory
 python -m venv .venv  # Create a Python virtual environment
 .\.venv\Scripts\activate  # Activate the virtual environment
 pip install -r requirements.txt  # Install project dependencies
 ```
+
+## Checking the saved M2 results
+
+From the repository folder, run:
+
+```bash
+python scripts/review_mennatalla_run.py
+```
+
+This checks the later Colab results in `results/mennatalla_m2_2026_11_22/`.
+For the earlier M2 run in `results/m2_baselines/`, use:
+
+```bash
+python scripts/review_m2_baselines.py
+```
+
+Both scripts use Python's standard library. They verify the saved measurements;
+they do not run the filters or train a model.
+Open `notebooks/m2_baseline_review.ipynb` to review and plot the earlier run
+(Matplotlib is needed for its chart).
+
+The M2 notebook depends on the repository's scripts and result files, so keep
+their folder structure intact. A fresh filtering experiment needs the input
+images and runner from the separately supplied complete project package.
 
 ## Dataset
 
@@ -124,14 +148,21 @@ requests fail with `CERTIFICATE_VERIFY_FAILED`.
 
 ```text
 notebooks/
-  store_sidd.ipynb      # dataset download (run first)
-  m1_baselines.ipynb    # M1 deliverable: split, metrics, BM3D/NLM, results
-results/                # generated: JSON metrics, figures, LaTeX table
-report/m1/              # M1 proposal (LaTeX source + bibliography)
+  store_sidd.ipynb          # download SIDD for the M1 experiment
+  m1_baselines.ipynb        # M1 calibration and held-out test evaluation
+  m2_baseline_review.ipynb  # review the earlier saved M2 validation run
+scripts/
+  review_m2_baselines.py    # check the earlier M2 measurements
+  review_mennatalla_run.py  # check the later Colab measurements
+src/c17/data.py             # prepare the fixed scene split and image crops
+results/
+  m2_baselines/            # earlier M2 validation results
+  mennatalla_m2_2026_11_22/ # later Colab validation results
+  verification/            # manifest and source information used by the checks
+  figures/                 # M1 figures
+report/m1/                 # M1 proposal, source and bibliography
 requirements.txt
 ```
-
-The notebooks are self-contained — there is no importable package to install.
 
 ---
 
@@ -155,6 +186,9 @@ The DND benchmark (M3) is a separate dataset with its own terms — review befor
 
 ## AI-tool usage
 
-Per course policy §9.1: code scaffolding for the baseline notebook was AI-assisted. All
-reported numbers were produced by executing `notebooks/m1_baselines.ipynb` in this
-repository and are reproducible from it.
+Per course policy §9.1: code scaffolding for the baseline notebook was AI-assisted.
+
+The M1 results come from `notebooks/m1_baselines.ipynb`. The M2 validation
+results are saved separately in `results/m2_baselines/` and
+`results/mennatalla_m2_2026_11_22/`. The two review scripts check those saved
+measurements; they do not rerun denoising.
