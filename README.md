@@ -36,8 +36,8 @@ Reproduced by running [`notebooks/m1_baselines.ipynb`](notebooks/m1_baselines.ip
 | Method | Parameter | PSNR (dB) | SSIM | s/crop |
 | --- | --- | --- | --- | --- |
 | Noisy input | — | 28.166 | 0.5096 | — |
-| **BM3D** | `sigma_psd` = 0.20 | **38.440** | **0.9360** | 5.12 |
-| NLM | `h` = 0.08 | 36.717 | 0.9248 | 0.18 |
+| **BM3D** | `sigma_psd` = 0.20 | **38.440** | **0.9360** | 5.05 |
+| NLM | `h` = 0.08 | 36.717 | 0.9248 | 0.19 |
 
 BM3D improves on the noisy input by **+10.27 dB**. Both parameters are interior optima of
 the search grid, not boundary selections.
