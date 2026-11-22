@@ -1,4 +1,4 @@
-*** This is a small version of the Smartphone Image Denoising Dataset (SIDD)
+*** This is a small version of the Smartphone Image Denoising Dataset (SIDD).
 ============================================================================
 
 The "Data" directory contains 160 images representing 160 scene instances. These images can be used for training/learning purposes.
