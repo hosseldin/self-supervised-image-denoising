@@ -1,0 +1,34 @@
+MENNATALLA - M2 GITHUB ADDITIONS (22 NOVEMBER 2026)
+
+Read docs/MENNATALLA_REVIEW_NOTES.txt first. It contains a first-person draft
+based on the verified run, not a claim of independent authorship or peer review.
+
+The new run is in results/mennatalla_m2_2026_11_22/. The earlier saved validation evidence remains
+in results/m2_baselines/. Do not mix their runtimes or replace M1 test values.
+
+Open notebooks/m2_mennatalla_colab_executed.ipynb in Colab using File > Upload
+notebook. Read the stored outputs without Run all when reviewing. The public
+copy keeps the original code, execution counts, measurements and PNGs, with
+explanatory comments and Markdown added afterwards. Interactive upload/download
+widgets and runtime metadata are removed; the exact original notebook remains
+in the verified local archive. No API credentials or input dataset ZIP is included.
+
+For a new filtering experiment, use the executed notebook with the unchanged
+Mennatalla_M2_Run_Data.zip input archive already supplied separately. It includes
+the exact original supporting source modules and 120 image pairs. The current
+public repository does not yet contain the full team model/evaluation handoff.
+This member package is an M2 addition, not the entire team's runnable project.
+
+For a read-only check of these recorded measurements, run from the repository:
+python scripts/review_mennatalla_run.py
+It uses only the Python standard library. It does not retrain or run the filters.
+For the older saved M2 table: python scripts/review_m2_baselines.py
+
+Files belong at the same repository-relative paths shown under UPLOAD.
+Upload the contents of UPLOAD to a new review branch. Do not upload the wrapper
+directory, delivery ZIP, REVIEW_ONLY, input data ZIP or a Python environment.
+M1 files and the submitted report are not replaced by this package.
+Coordinate the shared M2 report and team integration with Hossam and Malak.
+
+Suggested commit message:
+Add Mennatalla M2 Colab validation results and review notes

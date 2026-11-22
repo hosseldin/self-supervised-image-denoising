@@ -1,0 +1,44 @@
+{
+  "started_utc": "20261122T144408Z",
+  "scope": "full_validation",
+  "count": 120,
+  "evaluation_only": true,
+  "training_performed": false,
+  "python": "3.13.18",
+  "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "versions": {
+    "numpy": "2.4.6",
+    "scipy": "1.16.3",
+    "scikit-image": "0.25.2",
+    "pillow": "11.3.0",
+    "matplotlib": "3.10.0",
+    "bm3d": "4.0.3",
+    "bm4d": "4.2.5",
+    "torch": "2.14.1+cpu"
+  },
+  "bm3d_sigma_psd": 0.2,
+  "nlm": {
+    "h": 0.08,
+    "patch_size": 7,
+    "patch_distance": 11,
+    "fast_mode": true
+  },
+  "threads": 2,
+  "seed_of_original_split": 681,
+  "manifest_sha256": "405739931b1915746af4643b35a59ddaa4293876472c64d43a8346040498099e",
+  "source_sha256": {
+    "src/c17/train.py": "d0ac75c1363155fee35bf5f90b54ddc8eedb64be412d882f8ed993fe8885bee1",
+    "src/c17/model.py": "5c588e7e02babd2aff7e0e0ca0c9163a5dfa559804e10a3196041e4ce34261b7",
+    "src/c17/metrics.py": "8ff8cc03c8fca2f70c07d68cc921563161b6d29b3996d1798ab93a48837d139c",
+    "src/c17/masking.py": "2ff933d8d5c184c39d6adfe8fedad1c4655b60dbea6c0f6331a04ae6c5f48cc8",
+    "src/c17/evaluate.py": "5265a6add873de23b431e4e691c7981b63c3ff93c2d416608c02296e962cb6b4",
+    "src/c17/data.py": "8cccab69b70a91a03a75cae1cb2184d7535f263fa1e70360f0450105df36b247",
+    "src/c17/refine.py": "3ca51f8bc8409bb9b0e4c22a92a305c3c624c185de67b007915e94cebc505e2b",
+    "src/c17/__init__.py": "0819f4e1def14dda9dc3a3215db2a2202a7040c003239058ac9b39806ff29a9c",
+    "src/c17/dnd.py": "01ba6e481315217d0fd888688c7e859fa0856428e73fd1baa4786e30f90ec59b"
+  },
+  "scoring": "RGB float64; exclude 4px border; Gaussian SSIM window 11 sigma 1.5",
+  "note": "Fresh filter evaluation with assistant-prepared code; student interpretation remains to be recorded.",
+  "completed_utc": "2026-11-22T15:19:54.655676+00:00",
+  "status": "complete"
+}
