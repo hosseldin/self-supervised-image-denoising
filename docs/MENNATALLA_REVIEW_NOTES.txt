@@ -1,91 +1,38 @@
-MENNATALLA - M2 REVIEW NOTES
-Mennatalla Mostafa Mohamed Kamal Ibrahem - 2101377
+M2 Experiment Notes
+Mennatalla Mostafa Mohamed Kamal Ibrahem — Student ID: 2101377
 
-Status: the experiment was executed and its downloaded files were verified.
-The first-person explanation below is a draft for my review before submission.
+This M2 notebook was run in Google Colab on 22 November 2026. The experiment used the same 120 SIDD validation crops for BM3D and NLM. I used a CPU runtime with two threads and kept the previously selected filter settings: sigma_psd = 0.20 for BM3D and h = 0.08 for NLM.
 
-WHAT I RAN
-I ran the supplied M2 notebook in Google Colab on 22 November 2026. This was a
-fresh evaluation of Noisy input, BM3D and NLM on the same 120 SIDD validation
-crops. I did not train a CNN or perform a new DND submission in this notebook.
-I used a CPU runtime with two threads. The recorded environment was Python
-3.13.18, NumPy 2.4.6, scikit-image 0.25.2,
-BM3D 4.0.3 and BM4D 4.2.5.
+This notebook evaluates the classical baselines. It does not train the CNN or submit results to DND.
+Results
+Method	Mean PSNR (dB)	Mean SSIM	Median time per crop (s)
+Noisy input	28.141	0.5132	0.000
+BM3D	38.149	0.9256	16.821
+NLM	36.527	0.9115	0.515
 
-The executed call was:
-run_validation(root, output_root=DRIVE_RESULTS / 'runs')
 
-The final archive was:
-menna_full_validation_20261122T144408Z_58b9c6.zip
-It was saved under My Drive / C17_Menna_M2_Results / runs and downloaded locally.
-The ZIP and all three sets of 120 crop IDs were checked with assistant support.
-The averages and median timings were recalculated from the per-crop CSVs and
-matched the saved summaries. The technical review script is included.
+Times are rounded to three decimal places; 0.000 does not mean exactly zero.
 
-MY RECORDED RESULTS
-Method     PSNR (dB)    SSIM       Median inference seconds/crop
-Noisy      28.140915     0.513210   0.000192
-BM3D       38.148501     0.925618   16.821206
-NLM        36.527360     0.911452   0.514807
+BM3D achieved the best average results. It outperformed NLM by approximately 1.62 dB in mean PSNR and achieved a higher mean SSIM. NLM was faster, with a median processing time of about 0.5 seconds per crop compared with about 17 seconds for BM3D.
 
-HOW I INTERPRET THE COMPARISON
-I would keep BM3D as the main classical baseline for this experiment. Its mean
-PSNR is 1.621 dB above NLM and its mean SSIM is higher too.
-NLM has a lower median runtime: 0.515 seconds per crop versus
-16.821 for BM3D. On this run, BM3D took about
-32.7 times as long by the median timing measure.
-That comparison describes this CPU run, not every possible machine.
-The timing starts after image loading and excludes metric calculation and Drive writes.
+Given these results, I would choose BM3D as the primary classical baseline. NLM is useful for showing the trade-off between image quality and processing time. Timings depend on the machine and exclude image loading, metric calculation, and saving to Drive.
 
-The first displayed crop was selected by manifest order, not by its score.
-In that crop, BM3D keeps more of the fine texture than NLM, which smooths it
-strongly. The individual-crop numbers in the image are not the table averages.
-I would not use one example alone to claim that a method wins on every image.
+The displayed example is the first validation crop listed in the manifest. In this example, BM3D preserves more fine texture, while NLM applies stronger smoothing. The scores shown on the image apply only to that crop. The table summarizes results across all 120 crops.
+Keeping the comparison fair
+Both methods processed the same noisy images. The clean reference images were used afterward to calculate PSNR and SSIM.
 
-WHY THE DATA IS SPLIT BY SCENE
-Several crops and captures can come from the same physical scene. If I treated
-those crops as unrelated and randomly mixed them between splits, similar
-content could appear in both training and validation. Keeping each scene in
-one split makes the comparison less affected by this leakage.
-The fixed split contains 364 training, 120 validation and 156 test crops.
+The dataset was split by scene so that all crops from a given scene stayed together. The fixed split contains 364 training crops, 120 validation crops, and 156 test crops. The noisy-only training manifest contains no clean-target paths.
 
-WHERE THE CLEAN IMAGES ARE USED
-The clean validation image is used to calculate PSNR and SSIM after filtering.
-BM3D and NLM receive the noisy image, not the clean reference. The noisy-only
-training manifest has no clean-target paths. This baseline experiment does not
-train the neural network; clean references are evaluation targets here.
+The 120 validation crops include the 24 crops used for the earlier parameter calibration. Therefore, this validation comparison is not an independent held-out test. The 156 test crops form a separate split, and their results should be reported separately.
 
-WHY THE COUNTS AND NUMBERS DIFFER BETWEEN M1 AND M2
-The 24-crop validation subset was used for the earlier parameter calibration.
-The 120-crop set is the full M2 validation comparison. It includes that smaller
-calibration subset, so it should not be called an independent held-out test.
-The 156 test crops are a different split. I should not change a validation
-curve label to a test mean just to make two figures look the same.
-The selected filter settings stay fixed: BM3D sigma_psd = 0.20 and NLM h = 0.08.
+The previous M2 BM3D result rounds to 38.148 dB, while this run rounds to 38.149 dB. The actual difference is only about 0.000018 dB. Rounding makes the difference look larger than it is. The filter settings were unchanged, so this is not evidence of an improvement from parameter tuning.
+Saving the results
+In the first Colab run, the detailed results were stored in Colab’s temporary storage. After I reconnected, the figures and summaries were still available, but the results ZIP was gone.
 
-The historical M2 BM3D mean is 38.148482767570 dB, while my recorded
-Colab mean is 38.148500558175 dB. Their full-precision difference is
-0.000017791 dB. They display as 38.148 and 38.149 at three
-decimal places because they sit on opposite sides of a rounding boundary.
-This is not evidence of a new tuning improvement. The historical M1 test
-number, 38.440 dB, describes a different recorded evaluation.
+I then ran the version that saves directly to Google Drive and downloaded the results ZIP after the run finished. I also encountered a notebook autosave conflict, so I downloaded the executed notebook to keep a separate copy.
 
-WHAT HAPPENED DURING SAVING
-The first online run left its detailed files in a temporary Colab runtime.
-After reconnecting, the notebook still showed its summaries and figures, but
-the original ZIP was unavailable. I then used the Drive-saving notebook and
-completed a fresh run. The second run saved per-crop files and its ZIP to Drive.
-A notebook autosave conflict also appeared, so I downloaded the executed
-notebook separately. The completed result ZIP and notebook are both preserved.
+With assistant support, the saved files were checked to confirm that all three methods used the same 120 crop IDs. The averages and median timings were recalculated from the per-crop CSV files and matched the saved summaries.
+My contribution
+I ran the provided notebook, selected the input archive, connected Google Drive, and saved the results. I used AI assistance for implementation, packaging, verification, and drafting these notes.
 
-MY CONTRIBUTION AND ASSISTANCE
-My confirmed hands-on work here was running the provided Colab notebook,
-selecting the input archive, connecting Drive, and saving the executed notebook
-and results. The source implementation, packaging, verification and this draft
-explanation were prepared with AI assistance. These notes do not claim that I
-wrote the full implementation independently or trained the team's CNN.
-
-BEFORE I UPLOAD
-I need to read this draft and adjust any wording that does not match my own
-understanding. A teammate's review has not yet been recorded.
-Teammate reviewer and review date: not yet recorded.
+These notes are still a draft for my review. There is no record of a teammate’s review for this item
