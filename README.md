@@ -5,10 +5,19 @@
 
 Implementation and evaluation of self-supervised image denoising on real-world sensor noise (SIDD), compared against classical filtering and, if time allows, a supervised baseline.
 
-### **Current status: Milestone 1**
+### Current status: M1 and M2 classical baselines
 
-The classical baselines (BM3D, NLM) are implemented,
-calibrated and scored. No self-supervised model is trained yet — that is M2.
+This branch contains the M1 baseline experiment and the M2
+validation results. In the M2 run, BM3D and NLM were
+tested on the same 120 SIDD validation crops, using the
+settings selected during M1.
+
+BM3D gave the higher average PSNR: 38.149 dB, compared with
+36.527 dB for NLM. NLM was much faster, so keeping both
+methods helps show the trade-off between quality and speed.
+
+The M1 test results and M2 validation results are reported
+separately because they use different image splits.
 
 #### **Objectives**
 
@@ -27,8 +36,8 @@ Reproduced by running [`notebooks/m1_baselines.ipynb`](notebooks/m1_baselines.ip
 | Method | Parameter | PSNR (dB) | SSIM | s/crop |
 | --- | --- | --- | --- | --- |
 | Noisy input | — | 28.166 | 0.5096 | — |
-| **BM3D** | `sigma_psd` = 0.20 | **38.440** | **0.9360** | 5.12 |
-| NLM | `h` = 0.08 | 36.717 | 0.9248 | 0.18 |
+| **BM3D** | `sigma_psd` = 0.20 | **38.440** | **0.9360** | 5.05 |
+| NLM | `h` = 0.08 | 36.717 | 0.9248 | 0.19 |
 
 BM3D improves on the noisy input by **+10.27 dB**. Both parameters are interior optima of
 the search grid, not boundary selections.
