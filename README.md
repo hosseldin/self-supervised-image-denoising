@@ -5,10 +5,19 @@
 
 Implementation and evaluation of self-supervised image denoising on real-world sensor noise (SIDD), compared against classical filtering and, if time allows, a supervised baseline.
 
-### **Current status: Milestone 1**
+### Current status: M1 and M2 classical baselines
 
-The classical baselines (BM3D, NLM) are implemented,
-calibrated and scored. No self-supervised model is trained yet — that is M2.
+This branch contains the M1 baseline experiment and the M2
+validation results. In the M2 run, BM3D and NLM were
+tested on the same 120 SIDD validation crops, using the
+settings selected during M1.
+
+BM3D gave the higher average PSNR: 38.149 dB, compared with
+36.527 dB for NLM. NLM was much faster, so keeping both
+methods helps show the trade-off between quality and speed.
+
+The M1 test results and M2 validation results are reported
+separately because they use different image splits.
 
 #### **Objectives**
 
