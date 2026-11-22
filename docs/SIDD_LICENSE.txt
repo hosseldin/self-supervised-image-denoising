@@ -29,6 +29,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-Prepared data in this package are cropped sRGB derivatives from the verified
-SIDD Small archive. Original capture IDs and crop coordinates are retained.
+Prepared data in this package are cropped sRGB derivatives of SIDD-Small,
+downloaded from the Kaggle mirror used in this project:
+https://www.kaggle.com/datasets/rajat95gupta/smartphone-image-denoising-dataset
+
+The archive's SHA-256 is recorded in results/verification/provenance.json
+to identify the exact downloaded copy used. This does not claim verification
+against an official checksum published by the dataset authors.
+
+Original capture IDs and crop coordinates are retained.
 No license or ownership over the original dataset is claimed by the team.
