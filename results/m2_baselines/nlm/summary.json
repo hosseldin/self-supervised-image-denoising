@@ -1,0 +1,13 @@
+{
+  "method": "nlm",
+  "stride": 1,
+  "split": "val",
+  "count": 120,
+  "threads": 4,
+  "manifest_sha256": "405739931b1915746af4643b35a59ddaa4293876472c64d43a8346040498099e",
+  "psnr_db": 36.527359583923875,
+  "ssim": 0.9114523219299479,
+  "psnr_std": 4.174718317480323,
+  "mean_seconds": 0.424586550835617,
+  "median_seconds": 0.4087316500081215
+}

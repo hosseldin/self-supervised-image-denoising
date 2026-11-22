@@ -1,0 +1,4 @@
+# Preserve the exact bytes used by the saved M2 evidence hashes.
+results/m2_baselines/** -text
+results/mennatalla_m2_2026_11_22/** -text
+results/verification/** -text

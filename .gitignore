@@ -3,11 +3,13 @@ __pycache__/
 *.py[cod]
 .ipynb_checkpoints/
 .venv/
+.venv-m2/
 venv/
 
 # Data — SIDD-Small is ~6.2 GB and lives in the kagglehub cache, never in the repo
 data/
 *.archive
+runs/
 
 # LaTeX build artefacts
 report/**/*.aux

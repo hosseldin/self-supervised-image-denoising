@@ -1,0 +1,28 @@
+{
+  "archive_sha256": "f7dff04d6a0e135c0c64a12cf5a23d7a8efaf67d013f0ce49006b2e9fddbc3cf",
+  "scene_split": {
+    "train": [
+      "001",
+      "003",
+      "005",
+      "008",
+      "009",
+      "010"
+    ],
+    "val": [
+      "002",
+      "004"
+    ],
+    "test": [
+      "006",
+      "007"
+    ]
+  },
+  "counts": {
+    "train": 364,
+    "val": 120,
+    "test": 156
+  },
+  "crop_rule": "256px centered at quarter positions, row-major; submitted M1",
+  "seed": 681
+}

@@ -1,0 +1,32 @@
+{
+  "description": "M2 baseline evidence copied from saved local runs; no filters rerun for this handoff.",
+  "prepared_on": "2026-11-19",
+  "split": "validation",
+  "count": 120,
+  "seed": 681,
+  "parameters": {
+    "bm3d_sigma_psd": 0.2,
+    "nlm_h": 0.08,
+    "nlm_patch_size": 7,
+    "nlm_patch_distance": 11
+  },
+  "original_files": {
+    "results/matrix/val/noisy/per_crop.csv": "91c6ad99b404043293deb8a776268efba960f0ecd49fa6cafdd7c46f42becfc5",
+    "results/matrix/val/noisy/summary.json": "ac5fe72bca52f8ff38f2880db079404e64ba81ba89d446ed8e4312db03558e92",
+    "results/matrix/val/bm3d/per_crop.csv": "4db567854c1212302b56d63ebdcad19e4eb8e87a48af31746a5b0dcc65f8fa4b",
+    "results/matrix/val/bm3d/summary.json": "26b80116d06b495a2210bab7eaff27b937691a5f4a15012bb7d02a144510bfaa",
+    "results/matrix/val/nlm/per_crop.csv": "c040d08b6528d36a9f864cc11ac6e265b727ed1e861527b5c926c3562b53e054",
+    "results/matrix/val/nlm/summary.json": "8fa4147b704ffbd065b856d991d7a499513da4a5e0b294008141a5545b79e6d6"
+  },
+  "package_sha256": {
+    "noisy/per_crop.csv": "91c6ad99b404043293deb8a776268efba960f0ecd49fa6cafdd7c46f42becfc5",
+    "noisy/summary.json": "ac5fe72bca52f8ff38f2880db079404e64ba81ba89d446ed8e4312db03558e92",
+    "bm3d/per_crop.csv": "4db567854c1212302b56d63ebdcad19e4eb8e87a48af31746a5b0dcc65f8fa4b",
+    "bm3d/summary.json": "26b80116d06b495a2210bab7eaff27b937691a5f4a15012bb7d02a144510bfaa",
+    "nlm/per_crop.csv": "c040d08b6528d36a9f864cc11ac6e265b727ed1e861527b5c926c3562b53e054",
+    "nlm/summary.json": "8fa4147b704ffbd065b856d991d7a499513da4a5e0b294008141a5545b79e6d6",
+    "baseline_table.csv": "f24653a03a8395845a20b7fe5457b6e68e9c8f33935112b80fe2cb265f302786",
+    "baseline_table.tex": "6630ef221bb7c199382982d791f0f4616873c34d1fc0c999315d34572439eca5"
+  }
+}
+

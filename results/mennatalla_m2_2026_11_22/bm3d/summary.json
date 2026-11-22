@@ -1,0 +1,13 @@
+{
+  "method": "bm3d",
+  "stride": 1,
+  "split": "val",
+  "count": 120,
+  "threads": 2,
+  "manifest_sha256": "405739931b1915746af4643b35a59ddaa4293876472c64d43a8346040498099e",
+  "psnr_db": 38.148500558174554,
+  "ssim": 0.9256183084015746,
+  "psnr_std": 4.769611496680878,
+  "mean_seconds": 16.880133018999995,
+  "median_seconds": 16.821205520499916
+}

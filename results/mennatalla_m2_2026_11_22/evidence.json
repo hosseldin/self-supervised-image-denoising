@@ -1,0 +1,30 @@
+{
+  "source": "Mennatalla Google Colab run, 22 November 2026; downloaded and verified locally",
+  "source_zip_name": "menna_full_validation_20261122T144408Z_58b9c6.zip",
+  "source_zip_sha256": "f90080b4c43a13b8a168a74bc3bcf00194a35b276ff68fbbca516153b7dbc2b3",
+  "count": 120,
+  "split": "val",
+  "package_sha256": {
+    "before_after.png": "013914aef8f355ad18ceea846a8abb7014fe964a3649fe4ad953a44c9d90339b",
+    "bm3d/per_crop.csv": "d70e1d0b40c6d8e35840b6b2428fd3fd8b95decbc203b0931b46f49c2f35bd2f",
+    "bm3d/run_config.json": "f96b9c6b4f0d0d675cb92cee5d69f8ed89753e9e9a80ac38b0631ce3c26d28a6",
+    "bm3d/summary.json": "9b3e393c2bb9052b251e119b72ec83dfcc0a92e347bd16dabff85aadacb5409f",
+    "bm3d.png": "068a9e93b65defa41f2a4e3ac6342b6e9e562184eaf8197dd5ea230e48ec846a",
+    "clean_reference.png": "3a177bec89a2142994b347051c6556f85334b52ce1b4c424babb23d3007b8738",
+    "comparison.csv": "bcde9719998d1abb512d811d7effec9323bc7eb213265bca1a226be3d3e54421",
+    "environment_and_protocol.json": "831962e94d998455203c4d396656027e2b2c6059d937c21a697537a9987c4a64",
+    "nlm/per_crop.csv": "5be854ba0025ceac00c4393a0a27fe66fa7636fa965c650abac66ad1ec37b10a",
+    "nlm/run_config.json": "a8f497eb08ad2299a2f1218f44d2498e9bcf03eb31faced6ffcf001ffdd969ff",
+    "nlm/summary.json": "85b6d14d5dcb82555e307a19817fb6bb6c20c39eb8bbf59ca52523e69526e1f2",
+    "nlm.png": "16e3ba87e986e14ab31d15f2be4eea9e1c6fe460073d1b3c12e25f945000dd7b",
+    "noisy/per_crop.csv": "abee46308327b913951bf0cf953191988675f21a7a894a3600d96fdefe693959",
+    "noisy/run_config.json": "2797bdc569f366849ce6f63b8da9c0dd62574f8947ac044cafd8af0c23e874b1",
+    "noisy/summary.json": "88331048782a79eac386e8397028fa0e7f06a0b0e9ab903a4b2d20468d4c92b2",
+    "noisy.png": "bc4df7f953751bab6c3a36791685c46b5fcaa983fc244c1d513c25d0d810ccb1",
+    "validation_comparison.png": "f558e0641094f422f0ad034133c95f6e991edbc448de8dea9e194e80e47740b0"
+  },
+  "excluded_from_source_zip": [
+    "MY_REVIEW_NOTES.txt (empty template; not included in this branch)"
+  ],
+  "historical_results_replaced": false
+}

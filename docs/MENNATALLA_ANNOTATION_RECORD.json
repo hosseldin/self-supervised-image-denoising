@@ -1,0 +1,14 @@
+{
+  "original_executed_notebook_sha256": "c7f757d1a649efdb62ba1f9af000842c71e9e5596a4866bcd905d57ad78e88ab",
+  "initial_public_notebook_sha256": "cf260974e990db4859138668ea4e489d32bdb9b899cc2ffd9e12b6ec8af5bef6",
+  "public_notebook_present": false,
+  "notebook_record_scope": "Historical verification of the initially published notebook. The notebook was later removed from this branch at the user's request.",
+  "code_cells_ast_unchanged": true,
+  "original_execution_counts_preserved": true,
+  "stream_and_png_outputs_preserved": true,
+  "interactive_widget_outputs_removed": 3,
+  "comments_added_after_execution": true,
+  "data_py_original_sha256": "8cccab69b70a91a03a75cae1cb2184d7535f263fa1e70360f0450105df36b247",
+  "data_py_annotated_sha256": "21bb29614cd53083e4f30686457c21bd8626c79c25102ad939799ad345fb1c8b",
+  "data_py_ast_unchanged": true
+}
