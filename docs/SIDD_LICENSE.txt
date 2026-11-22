@@ -1,4 +1,4 @@
-SIDD attribution and license
+SIDD attribution and license.
 
 Dataset authors: Abdelrahman Abdelhamed, Stephen Lin and Michael S. Brown.
 Paper: A High-Quality Denoising Dataset for Smartphone Cameras, CVPR 2018.
