@@ -1,7 +1,7 @@
 M2 Experiment Notes
 Mennatalla Mostafa Mohamed Kamal Ibrahem — Student ID: 2101377
 
-This M2 notebook was run in Google Colab on 22 November 2026. The experiment used the same 120 SIDD validation crops for BM3D and NLM. I used a CPU runtime with two threads and kept the previously selected filter settings: sigma_psd = 0.20 for BM3D and h = 0.08 for NLM.
+ I used a CPU runtime with two threads and kept the previously selected filter settings: sigma_psd = 0.20 for BM3D and h = 0.08 for NLM.
 
 This notebook evaluates the classical baselines. It does not train the CNN or submit results to DND.
 Results
