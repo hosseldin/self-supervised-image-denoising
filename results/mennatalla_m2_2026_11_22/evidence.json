@@ -24,7 +24,7 @@
     "validation_comparison.png": "f558e0641094f422f0ad034133c95f6e991edbc448de8dea9e194e80e47740b0"
   },
   "excluded_from_source_zip": [
-    "MY_REVIEW_NOTES.txt (empty template; completed draft is docs/MENNATALLA_REVIEW_NOTES.txt)"
+    "MY_REVIEW_NOTES.txt (empty template; not included in this branch)"
   ],
   "historical_results_replaced": false
 }
